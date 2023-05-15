@@ -1,0 +1,396 @@
+/**** Section 11👉 EVENTS in JavaScript ****/
+
+
+// HTML events are "things" that happen to HTML elements.
+// When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+
+
+// 👨‍🏫 HTML Events
+// An HTML event can be something the browser does, or something a user does.
+
+// Here are some examples of HTML events:
+
+// An HTML web page has finished loading
+// An HTML input field was changed
+// An HTML button was clicked
+// Often, when events happen, you may want to do something.
+
+// JavaScript lets you execute code when events are detected.
+
+// HTML allows event handler attributes, with JavaScript code,
+// to be added to HTML elements.
+
+
+
+<br><br><br><br><br><br>
+
+
+/*=====================================================================================
+
+// section 1️⃣ 4 ways of writing Events in JavaScript
+==============================================================================*/
+
+// 1: using inline events alert();
+<a href="#" class="button" onclick="alert('inline events.......')">
+    <span style="color: blue; font-size: xx-large;">
+        simple inline alert()
+    </span>
+</a>
+
+<br><br><br><br><br><br>
+
+// 2: By Calling a funcion (We already seen and most common way of writing)
+
+<a href="#" class="button" onclick="callingFunction()">
+    <span style="color: red; font-size: xx-large;">
+        By Calling Function
+    </span>
+</a>
+
+<script>
+    const callingFunction = () => {
+        alert("Calling Function :--  most common way of writing functions");
+    }
+</script>
+
+<br><br><br><br><br><br>
+
+// 3: using Inline events (HTML onclick="" property and element.onclick)
+
+<a href="#" class="button">
+    <span style="color: rgb(0, 255, 42); font-size: xx-large;" id="thirdway">
+        using get element by id
+    </span>
+</a>
+
+<script>
+    const thirdway = document.getElementById('thirdway');
+    thirdway.onclick = function () {
+        alert("using get element by id");
+    }
+
+        // overwrite thau atle  print :- latest hoi e thase...
+        // thirdway.onclick = function(){
+        //      alert("using get element by id 2 time");
+        // }
+
+</script>
+
+<br><br><br><br><br><br>
+
+
+// 4: using Event Listeners (addEventListener and IE's attachEvent)
+
+<a href="#" class="button">
+    <span style="color: rgb(0, 247, 255); font-size: xx-large;" id="fourthway">
+        using Add events Listeners
+    </span>
+</a>
+
+<script>
+    const fourthway = document.querySelector('#fourthway');
+    fourthway.addEventListener('click', () => {
+        alert("using add events listener... 1 time");
+
+    })
+
+        //  add event lister ma vara farthi print thase...... pela 1 time and pachi 2 time
+        // fourthway.addEventListener('click', () =>{
+        //     alert("using add events listener...2 time");
+
+        // })
+
+
+</script>
+
+<br><br><br><br><br><br>
+
+/*==================================================================
+// section 2️⃣: What is Event Object?
+==================================================================*/
+
+// Event object is the parent object of the event object.
+// for Example
+// MouseEvent, focusEvent, KeyboardEvent etc......
+
+
+<a href="#" class="button">
+    <span style="color: rgb(255, 0, 0); font-size: xx-large;" id="sampleObj">
+        Event Object....
+    </span>
+</a>
+
+<script>
+    const sampleobj = document.querySelector('#sampleObj');
+
+    const checkevent = () => {
+        alert("Event Object................");
+        console.log(event);
+        console.log(event.target);
+        console.log(event.type);
+
+    }
+    sampleobj.addEventListener('click', checkevent);
+
+
+
+</script>
+
+<br><br><br><br><br><br>
+
+/*========================================
+// section ️3️⃣ MouseEvent in JavaScript
+==================================*/
+// The MouseEvent Object
+// Events that occur when the mouse interacts with the HTML
+// document belongs to the MouseEvent Object.
+
+
+<div class="main-div">
+    <div id="box" style=" width:100px; height:100px ;background-color:black;">
+    </div>
+</div>
+
+<p id="myPPPPP" onmousedown="mousedown()" onmouseup="mouseup()"> Lorem ipsum dolor, sit amet consectetur adipisicing
+    elit. Sed dolore enim iure quidem molestias. Nam saepe necessitatibus velit assumenda qui sapiente adipisci veniam.
+    Autem, commodi minima necessitatibus numquam iusto harum.</p>
+
+
+<script>
+    const mouevent = document.getElementById('box');
+    mouevent.addEventListener('mouseenter', () => {
+        mouevent.style.backgroundColor = 'red';
+        console.log('mouse enter bro...');
+    })
+
+    mouevent.addEventListener('mouseleave', () => {
+        mouevent.style.backgroundColor = 'blue';
+        console.log('mouse leave bro....');
+    })
+
+    const mousedownup = document.getElementById('myPPPPP');
+
+    function mousedown() {
+        mousedownup.style.color = 'pink';
+    }
+
+    function mouseup() {
+        mousedownup.style.color = 'yellow';
+    }
+</script>
+
+
+<br><br><br><br><br><br>
+
+/*=================================================================
+// section ️4️⃣ KeyboardEvent in JavaScript
+=============================================================*/
+
+// Events that occur when user presses a key on the keyboard,
+// belongs to the KeyboardEvent Object.
+// https://www.w3schools.com/jsref/obj_keyboardevent.asp
+
+<p>A function is triggered when the user is pressing a key in the input field.</p>
+<br>
+<input type="text" class="text" onkeypress="keyPress()" onkeydown="keyDown()" onkeyup="keyUp()">
+<p id="keys"></p>
+
+
+<script>
+
+    // const keyPress = () =>{
+    //     document.getElementById('keys').innerHTML = `you press ${event.key} and its code is ${event.code}`;
+    // }
+
+    const keyDown = () => {
+        document.getElementById('keys').innerHTML = `key is down`;
+        // when we click backslah to delete then it will run.
+    }
+
+    const keyUp = () => {
+        document.getElementById('keys').innerHTML = `key is up`;
+        // when we click backslah to delete then it will run.
+    }
+
+
+</script>
+
+<br><br><br><br><br><br>
+
+
+
+
+/*================================================================
+// Section 5️⃣ InputEvents in JavaScript
+================================================================*/
+
+// The onchange event occurs when the value of an element has been changed.
+
+// For radiobuttons and checkboxes, the onchange event occurs when the
+// checked state has been changed.
+
+<br>
+<label for="">Your Name : </label>
+<input type="text" id="ice">
+<br>
+<label for="">Choose an ice-cream flavor
+    <select name="icecreams" id="icecream" onchange="selectElements()">
+        <option value="">select one</option>
+        <option value="chocolate">chocolate</option>
+        <option value="sardine">sardine</option>
+        <option value="vanilla">vanilla</option>
+
+    </select>
+</label>
+
+<div id="result"></div>
+
+<script>
+    // const selectElements = () =>{
+
+
+    // const inputchange = document.getElementById('ice').value;
+    // const icecream = document.getElementById('icecream').value;
+    // const result = document.getElementById('result');
+
+    // result.innerHTML = `Mr ${inputchange} select ${icecream} ice-cream flavour`;
+
+    // }
+
+
+    const icecream = document.getElementById('icecream');
+    icecream.addEventListener('change', () => {
+
+        const inputchange = document.getElementById('ice').value;
+        const icecream = document.getElementById('icecream').value;
+        const result = document.getElementById('result');
+
+        result.innerHTML = `Mr ${inputchange} select ${icecream} ice-cream flavour`;
+
+    })
+
+</script>
+
+<br><br><br><br><br>
+
+
+
+// **********************************************************************
+
+// 👉 JavaScript Timing Events // Timing Based Events
+
+// **********************************************************************
+
+// The window object allows execution of code at specified time intervals.
+
+// These time intervals are called timing events.
+
+// The two key methods to use with JavaScript are:
+
+
+///**********************************
+1. setTimeout(function, milliseconds)
+*********************************************////
+// Executes a function, after waiting a specified number of milliseconds.
+
+<br>
+
+<div>
+    <p>want to know my Name ?</p>
+    <p id="showMyName"></p>
+    <br>
+    <button id="btn">click here</button>
+
+</div>
+
+<script>
+
+    const showMyName = document.getElementById('showMyName');
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', () => {
+        showMyName.innerHTML = "loading.......";
+        setTimeout(() => {
+            showMyName.innerHTML = "Romil Gabani";
+
+        }, 2000);
+
+    });
+
+</script>
+<br><br>
+
+/*/********************************************************
+2. clearTimeout()
+*************************************************************/
+<br>
+
+<div>
+    <p>click "try it". wait 3 seconds. the page will alert "hello".</p>
+    <p>click "Stop" to prevent the first function to execute.</p>
+    <p>(you must click "stop" before the 2 seconds are up.)</p>
+    <button onclick=" myvar = setTimeout(myFunction,5000)">Try it</button>
+
+    <button onclick=" clearTimeout(myvar)">Stop it</button>
+
+</div>
+
+
+<script>
+    function myFunction() {
+        alert("Hello.....");
+    }
+
+</script>
+
+<br><br><br>
+
+//**********************************************************************
+// 3. setInterval(function, milliseconds)
+// Same as setTimeout(), but repeats the execution of the function continuously.
+
+// 4️ .  clearInterval()
+********************************************************//
+
+
+<br>
+
+<div>
+    <p>Count down..</p>
+
+    <p id="showMynumber"></p>
+    <button id="btn2">click here</button>
+    <button id="btn3">stop here</button>
+
+
+
+</div>
+
+
+<script>
+    const showMynumber = document.getElementById('showMynumber');
+    const btn2 = document.getElementById('btn2');
+    const btn3 = document.getElementById('btn3');
+    let timeRef;
+    let num = 0;
+    
+    
+    btn2.addEventListener('click', () => {
+        showMynumber.innerHTML = "Loading..........";
+
+       timeRef =  setInterval(() => {
+            showMynumber.innerHTML = `${num}`;
+            num++;
+
+        }, 1000);
+
+
+    });
+
+    btn3.addEventListener('click', () =>{
+        clearInterval(timeRef);
+    });
+
+</script>
+
+<br><br><br>

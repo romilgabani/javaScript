@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .parentClass{
+            position: absolute;
+            border: 2px solid black;
+            background-color: red;
+            height: 400px;
+            width: 600px;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+            cursor: pointer;
+        }
+
+        .childClass{
+            position: relative;
+            border: 2px solid green;
+            background-color: blue;
+            height: 200px;
+            width: 300px;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+    </style>
+</head>
+<body>
+    
+<h2>Event propagation, capturing, bubbling</h2>
+
+<div class="parentClass" id="parentId">
+    <div class="childClass" id="childId"></div>
+</div>
+
+<script>
+  
+  /* 
+            // bubbling...........
+      event.stopPropagation use karvi to child div per click karvi to only child j alert thase parent alert nai thai but 
+        
+      event.stopPropagation use no karvi to child div per click karvi to alert thase ane pachi automatically parent div ne pan call thase
+      that is called bubbling.... by defaulf bubbling j hoy.......
+
+      // child to parent 
+  */
+    // const parentId = document.getElementById('parentId');
+    // const childId = document.getElementById('childId');
+
+    // parentId.addEventListener ('click',()=>{
+    //     alert("parent class Id div call");
+    // });
+
+    // childId.addEventListener('click',() =>{
+    //     alert("child class id div call");
+    //     event.stopPropagation();
+    // });
+
+
+    
+
+    /*
+    //   Capturing............
+         
+    jayare child div per click karvi tyare parent div nu alert show thase ae pachi child div nu alert show thase.....   // parent to child 
+
+    */
+    const parentId = document.getElementById('parentId');
+    const childId = document.getElementById('childId');
+
+    parentId.addEventListener ('click',()=>{
+        alert("parent class Id div call");
+    },true);      // 3rd argument ma true ni jagyaye false karvi jo ke by default false j hoy to bubbling kevai...
+
+    childId.addEventListener('click',() =>{
+        alert("child class id div call");
+        
+    },true);
+</script>
+
+</body>
+</html>

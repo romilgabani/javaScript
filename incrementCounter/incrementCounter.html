@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 255, 0.479);
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 100px;
+            font-size: 50px;
+        }
+
+
+        .grid-three-column {
+            gap: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-template-columns: 1fr 1fr; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="counter-container  grid-three-column">
+        <i class="fa-sharp fa-solid fa-mug-hot fa-3x"></i>
+        <div class="counter " data-target="4000"></div>
+
+        <span>project Completed</span>
+    </div>
+
+    <div class="counter-container grid-three-column">
+        <i class="fa-solid fa-users fa4px"></i>
+        <div class="counter " data-target="15000"></div>
+        <span>Our Happy Clients</span>
+    </div>
+
+    <div class="counter-container grid-three-column">
+        <i class="fa-sharp fa-solid fa-list-check fa-3x"></i>
+        <div class="counter " data-target="500"></div>
+        <span>OnGoing Projects</span>
+    </div>
+
+
+    <script>
+
+        const counters = document.querySelectorAll('.counter');
+
+        counters.forEach((counter) => {
+            // console.log(counter); 
+            counter.innerHTML = 0;
+
+            const updateCounter = () => {
+                const targetCount = +counter.getAttribute('data-target');
+                // console.log(targetCount);
+
+                const startingCount = Number(counter.innerHTML);
+
+                const incr = targetCount / 100;
+
+                if (startingCount < targetCount) {
+                    counter.innerHTML = `${Math.round(startingCount + incr)}`;
+                    setTimeout(updateCounter, 10);
+                } else {
+                    counter.innerHTML = targetCount;
+                }
+            }
+            updateCounter();
+
+            /*
+            There are several ways to achieve it:  String to Int convert
+
+            Using the unary plus operator:==
+            var n = +str;
+
+            the number constructor:==
+            var n = Number(str);
+
+            the parseFloat function:==
+            var n = parseFloat(str);
+            */
+
+        })
+
+    </script>
+</body>
+
+</html>

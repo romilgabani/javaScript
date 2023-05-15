@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgba(0, 0, 255, 0.486);
+
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        h3 {
+            font-size: 50px;
+            color: yellow;
+        }
+
+       
+
+        button {
+            margin: 20px;
+            height: 50px;
+            width: 180px;
+
+
+        }
+
+        .white_light {
+            background-color: white;
+        }
+
+        .yellow_light {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>can you turn the light on?</h3>
+
+        <img src="white_light.jpg" alt="" id="myImg_white" class="myImg">
+
+        <div class="btns">
+
+            <button id="white_light" class="white_light ">Turn on the white light</button>
+
+
+            <button id="yellow_light" class="yellow_light ">Turn on the yellow light</button>
+
+        </div>
+    </div>
+
+    <script>
+        const white_light = document.getElementById('white_light');
+        const yello_light = document.getElementById('yellow_light');
+
+
+        white_light.addEventListener('click', () => {
+            let myImg_white = document.getElementById('myImg_white').src = 'white_light.jpg';
+        })
+
+        yello_light.addEventListener('click', () => {
+            let myImg_white = document.getElementById('myImg_white').src = 'yellow_light.jpg';
+        })
+    </script>
+</body>
+
+</html>
